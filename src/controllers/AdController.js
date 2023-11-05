@@ -1,10 +1,12 @@
 import Logger from "../util/Logger.js";
-
-import ads from "../../../database/ads.json" assert { type: "json" };
+import fs from "fs";
 
 const AdController = {
   list: (req, res) => {
-    res.json(ads);
+    fs.readFile("../database/ads.json", "utf8", function (err, data) {
+      if (err) throw err;
+      res.json(JSON.parse(data));
+    });
   },
 };
 

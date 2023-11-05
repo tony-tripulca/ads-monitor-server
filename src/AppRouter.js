@@ -9,6 +9,7 @@ function AppRoutes() {
   });
 
   app.get("/ads", (req, res) => {
+    Logger.out([`GET /ads`, req.query]);
     AdController.list(req, res);
   });
 }
